@@ -8,13 +8,15 @@ from pydantic import BaseModel
 from typing import List
 from ansi2html import Ansi2HTMLConverter
 
+TEMPLATE_PATH = "templates"
+
 class TestOptions(BaseModel):
     verbose: bool
     report: bool
     tests: List[str]
 
 router = APIRouter()
-template_path = os.path.join(os.path.dirname(__file__), "templates")
+template_path = os.path.join(os.path.dirname(__file__), TEMPLATE_PATH)
 
 templates = Jinja2Templates(directory=template_path)
 

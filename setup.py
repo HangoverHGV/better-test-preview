@@ -1,8 +1,8 @@
 from setuptools import setup, find_packages
 
 setup(
-    name="api",
-    version="0.1.0",
+    name="better-test-preview",
+    version="0.0.2",
     description="FastAPI app",
     packages=find_packages(),
     install_requires=[
@@ -14,4 +14,5 @@ setup(
         "pytest-html",
         "ansi2html",
     ],
+    author="HangoverHGV",
 )
