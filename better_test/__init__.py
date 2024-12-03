@@ -1,1 +1,0 @@
-from better_test_preview import main

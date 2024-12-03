@@ -15,7 +15,7 @@ class TestOptions(BaseModel):
     report: bool
     tests: List[str]
 
-router = APIRouter()
+test_router = APIRouter()
 template_path = os.path.join(os.path.dirname(__file__), TEMPLATE_PATH)
 
 templates = Jinja2Templates(directory=template_path)
@@ -50,11 +50,11 @@ def find_all_tests_in_project():
 
     return tests
 
-@router.get("/", response_class=HTMLResponse)
+@test_router.get("/", response_class=HTMLResponse)
 def output_tests(request: Request):
     return templates.TemplateResponse("index.html", {"request": request, "tests": find_all_tests_in_project()}, media_type="text/html")
 
-@router.post("/run")
+@test_router.post("/run")
 def run_background(options: TestOptions):
     data = options.model_dump()
     logs = run_test(data)
